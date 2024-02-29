@@ -1,0 +1,80 @@
+<?php 
+include "koneksi.php";
+
+if (isset($_POST['register'])) {
+$email = $_POST ['email'];
+$username = $_POST ['username'];
+$password = $_POST ['password'];
+$namalengkap = $_POST ['namalengkap'];
+$alamat = $_POST ['alamat'];
+
+echo $email." ".$username." ".$password." ".$namalengkap." ".$alamat;
+
+$sql=mysqli_query($conn,"insert into user values('','$username','$password','$email','$namalengkap','$alamat')");
+
+header("location:login.php");
+}
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Galery Foto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <?php 
+    include "layout/header.html";
+    ?>
+    
+    <main class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-4 mt-4">
+     <h1 class=" mb-4 text-center">REGISTER</h1>
+     <form action="register.php" method="POST">
+  <div class="mb-1">
+    <label for="username">Username:</label>
+    <input type="username" class="form-control" id="username" name="username">
+  </div>
+  <div class="mb-1">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password" name="password">
+  </div>
+  <div class="mb-1">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" name="email">
+  </div>
+  <div class="mb-1">
+    <label for="namalengkap">Nama Lengkap:</label>
+    <input type="namalengkap" class="form-control" id="namalengakp" name="namalengkap">
+  </div>
+  <div class="mb-1">
+    <label for="alamat">Alamat:</label>
+    <input type="alamat" class="form-control" id="alamat" name="alamat">
+  </div>
+  <div class="text-center">
+  <button type="submit" class="btn btn-primary" name="register">Register</button>
+  </div>
+  <div class="text-center">
+    Sudah punya akun? <a href="login.php">Login Disini</a>
+    </div>
+</form>
+    </div>
+      </div>
+    </main>
+
+    <?php 
+    include "layout/footer.html";
+    ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
